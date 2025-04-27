@@ -1,0 +1,673 @@
+{
+  "surf_plan_id": 1,
+  "date": "2025-05-07",
+  "non_participating_guests": [{
+              "first_name": "Berthold",
+              "last_name": "Maler",
+              "birthdate": "2000-01-01",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-1",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          },
+          {
+              "first_name": "Bert",
+              "last_name": "Maler",
+              "birthdate": "2001-01-01",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-2",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          },
+          {
+              "first_name": "Bertich",
+              "last_name": "Doe",
+              "birthdate": "1999-06-01",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-3",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          },
+          {
+              "first_name": "Lottie",
+              "last_name": "Doe",
+              "birthdate": "2000-03-15",
+              "gender": "F",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-4",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          },
+          {
+              "first_name": "Karlo",
+              "last_name": "Smith",
+              "birthdate": "1998-08-10",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-5",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          }],
+  "slots": [
+    {
+      "time": "2025-05-07T12:00:00",
+      "groups": [
+        {
+          "level": "BEGINNER",
+          "age_group": "18 - 60",
+          "students": [
+          {
+              "first_name": "Max",
+              "last_name": "Maler",
+              "birthdate": "2000-01-01",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-1",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          },
+          {
+              "first_name": "Lisa",
+              "last_name": "Maler",
+              "birthdate": "2001-01-01",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-2",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          },
+          {
+              "first_name": "John",
+              "last_name": "Doe",
+              "birthdate": "1999-06-01",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-3",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          },
+          {
+              "first_name": "Alice",
+              "last_name": "Doe",
+              "birthdate": "2000-03-15",
+              "gender": "F",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-4",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          },
+          {
+              "first_name": "Robert",
+              "last_name": "Smith",
+              "birthdate": "1998-08-10",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER",
+              "student_id": "id-5",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+          }]
+        },
+        {
+          "level": "BEGINNER+",
+          "age_group": "18 - 60",
+          "students": [
+            {
+              "first_name": "Tina",
+              "last_name": "Schmidt",
+              "birthdate": "1999-06-15",
+              "gender": "F",
+              "age_group": "18 - 60",
+              "level": "BEGINNER+",
+              "student_id": "id-11",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            },
+            {
+              "first_name": "Kevin",
+              "last_name": "Dorn",
+              "birthdate": "2002-04-05",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER+",
+              "student_id": "id-12",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            },
+            {
+              "first_name": "Sarah",
+              "last_name": "Johnson",
+              "birthdate": "1995-11-22",
+              "gender": "F",
+              "age_group": "18 - 60",
+              "level": "BEGINNER+",
+              "student_id": "id-13",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            },
+            {
+              "first_name": "Tom",
+              "last_name": "Green",
+              "birthdate": "2001-05-18",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "BEGINNER+",
+              "student_id": "id-14",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            },
+            {
+              "first_name": "Jane",
+              "last_name": "Wilson",
+              "birthdate": "1997-12-12",
+              "gender": "F",
+              "age_group": "18 - 60",
+              "level": "BEGINNER+",
+              "student_id": "id-15",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            }]
+        },
+        {
+          "level": "INTERMEDIATE",
+          "age_group": "18 - 60",
+          "students": [
+                  {
+                    "first_name": "George",
+                    "last_name": "Lee",
+                    "birthdate": "1994-06-15",
+                    "gender": "M",
+                    "age_group": "18 - 60",
+                    "level": "INTERMEDIATE",
+                    "student_id": "id-21",
+                    "start_date": "2025-05-05",
+                    "end_date": "2025-05-12"
+                  },
+                  {
+                    "first_name": "Emma",
+                    "last_name": "Khan",
+                    "birthdate": "1992-10-05",
+                    "gender": "F",
+                    "age_group": "18 - 60",
+                    "level": "INTERMEDIATE",
+                    "student_id": "id-22",
+                    "start_date": "2025-05-05",
+                    "end_date": "2025-05-12"
+                  },
+                  {
+                    "first_name": "Jake",
+                    "last_name": "Parker",
+                    "birthdate": "1993-07-14",
+                    "gender": "M",
+                    "age_group": "18 - 60",
+                    "level": "INTERMEDIATE",
+                    "student_id": "id-23",
+                    "start_date": "2025-05-05",
+                    "end_date": "2025-05-12"
+                  },
+                  {
+                    "first_name": "Sophia",
+                    "last_name": "Mitchell",
+                    "birthdate": "1991-11-24",
+                    "gender": "F",
+                    "age_group": "18 - 60",
+                    "level": "INTERMEDIATE",
+                    "student_id": "id-24",
+                    "start_date": "2025-05-05",
+                    "end_date": "2025-05-12"
+                  },
+                  {
+                    "first_name": "Matthew",
+                    "last_name": "Clark",
+                    "birthdate": "1995-05-30",
+                    "gender": "M",
+                    "age_group": "18 - 60",
+                    "level": "INTERMEDIATE",
+                    "student_id": "id-25",
+                    "start_date": "2025-05-05",
+                    "end_date": "2025-05-12"
+                  }]
+        },
+        {
+          "level": "BEGINNER",
+          "age_group": "5 - 12",
+          "students": [
+              {
+                "first_name": "Anna",
+                "last_name": "Wood",
+                "birthdate": "2012-03-17",
+                "gender": "F",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-41",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Ben",
+                "last_name": "Jones",
+                "birthdate": "2010-06-01",
+                "gender": "M",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-42",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Clara",
+                "last_name": "White",
+                "birthdate": "2011-11-03",
+                "gender": "F",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-43",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Danny",
+                "last_name": "Black",
+                "birthdate": "2012-05-09",
+                "gender": "M",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-44",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Eva",
+                "last_name": "Taylor",
+                "birthdate": "2011-04-18",
+                "gender": "F",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-45",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              }]
+        },
+        {
+          "level": "BEGINNER",
+          "age_group": "13 - 18",
+          "students": [
+              {
+                "first_name": "Ethan",
+                "last_name": "Taylor",
+                "birthdate": "2003-12-01",
+                "gender": "M",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-31",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Isabella",
+                "last_name": "Moore",
+                "birthdate": "2004-08-19",
+                "gender": "F",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-32",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Cameron",
+                "last_name": "Scott",
+                "birthdate": "2005-02-12",
+                "gender": "M",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-33",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Zoe",
+                "last_name": "Miller",
+                "birthdate": "2006-04-03",
+                "gender": "F",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-34",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Logan",
+                "last_name": "Davis",
+                "birthdate": "2005-11-15",
+                "gender": "M",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-35",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              }]
+        }
+      ]
+    },
+    {
+      "time": "2025-05-07T13:30:00",
+      "groups": [
+        {
+          "level": "BEGINNER",
+          "age_group": "18 - 60",
+          "students":  [{
+                  "first_name": "Mary",
+                  "last_name": "Jones",
+                  "birthdate": "2000-05-25",
+                  "gender": "F",
+                  "age_group": "18 - 60",
+                  "level": "BEGINNER",
+                  "student_id": "id-6",
+                  "start_date": "2025-05-05",
+                  "end_date": "2025-05-12"
+                },
+                {
+                  "first_name": "Steve",
+                  "last_name": "Green",
+                  "birthdate": "1997-07-10",
+                  "gender": "M",
+                  "age_group": "18 - 60",
+                  "level": "BEGINNER",
+                  "student_id": "id-7",
+                  "start_date": "2025-05-05",
+                  "end_date": "2025-05-12"
+                },
+                {
+                  "first_name": "Sophia",
+                  "last_name": "Miller",
+                  "birthdate": "2001-02-15",
+                  "gender": "F",
+                  "age_group": "18 - 60",
+                  "level": "BEGINNER",
+                  "student_id": "id-8",
+                  "start_date": "2025-05-05",
+                  "end_date": "2025-05-12"
+                },
+                {
+                  "first_name": "Mark",
+                  "last_name": "White",
+                  "birthdate": "1999-09-20",
+                  "gender": "M",
+                  "age_group": "18 - 60",
+                  "level": "BEGINNER",
+                  "student_id": "id-9",
+                  "start_date": "2025-05-05",
+                  "end_date": "2025-05-12"
+                },
+                {
+                  "first_name": "Tina",
+                  "last_name": "Brown",
+                  "birthdate": "2000-04-04",
+                  "gender": "F",
+                  "age_group": "18 - 60",
+                  "level": "BEGINNER",
+                  "student_id": "id-10",
+                  "start_date": "2025-05-05",
+                  "end_date": "2025-05-12"
+                }
+              ]
+        },
+        {
+          "level": "BEGINNER+",
+          "age_group": "18 - 60",
+          "students":  [{
+                 "first_name": "Oliver",
+                "last_name": "Brown",
+                "birthdate": "1999-10-02",
+                "gender": "M",
+                "age_group": "18 - 60",
+                "level": "BEGINNER+",
+                "student_id": "id-16",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Diana",
+                "last_name": "Taylor",
+                "birthdate": "1998-03-15",
+                "gender": "F",
+                "age_group": "18 - 60",
+                "level": "BEGINNER+",
+                "student_id": "id-17",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Charlie",
+                "last_name": "King",
+                "birthdate": "2000-07-01",
+                "gender": "M",
+                "age_group": "18 - 60",
+                "level": "BEGINNER+",
+                "student_id": "id-18",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Liam",
+                "last_name": "Adams",
+                "birthdate": "1999-12-09",
+                "gender": "M",
+                "age_group": "18 - 60",
+                "level": "BEGINNER+",
+                "student_id": "id-19",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Emma",
+                "last_name": "Lee",
+                "birthdate": "2001-08-11",
+                "gender": "F",
+                "age_group": "18 - 60",
+                "level": "BEGINNER+",
+                "student_id": "id-20",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              }
+            ]
+        },
+        {
+          "level": "INTERMEDIATE",
+          "age_group": "18 - 60",
+          "students": [
+            {
+              "first_name": "Olivia",
+              "last_name": "Scott",
+              "birthdate": "1992-01-15",
+              "gender": "F",
+              "age_group": "18 - 60",
+              "level": "INTERMEDIATE",
+              "student_id": "id-26",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            },
+            {
+              "first_name": "Max",
+              "last_name": "Taylor",
+              "birthdate": "1990-07-22",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "INTERMEDIATE",
+              "student_id": "id-27",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            },
+            {
+              "first_name": "Isla",
+              "last_name": "Harris",
+              "birthdate": "1993-10-18",
+              "gender": "F",
+              "age_group": "18 - 60",
+              "level": "INTERMEDIATE",
+              "student_id": "id-28",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            },
+            {
+              "first_name": "Nate",
+              "last_name": "Wright",
+              "birthdate": "1994-02-02",
+              "gender": "M",
+              "age_group": "18 - 60",
+              "level": "INTERMEDIATE",
+              "student_id": "id-29",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            },
+            {
+              "first_name": "Zara",
+              "last_name": "Robinson",
+              "birthdate": "1992-09-09",
+              "gender": "F",
+              "age_group": "18 - 60",
+              "level": "INTERMEDIATE",
+              "student_id": "id-30",
+              "start_date": "2025-05-05",
+              "end_date": "2025-05-12"
+            }
+          ]
+        },
+        {
+          "level": "BEGINNER",
+          "age_group": "5 - 12",
+          "students": [
+            {
+                "first_name": "Felix",
+                "last_name": "Gray",
+                "birthdate": "2010-10-05",
+                "gender": "M",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-46",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Grace",
+                "last_name": "Nelson",
+                "birthdate": "2011-07-21",
+                "gender": "F",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-47",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Henry",
+                "last_name": "Clark",
+                "birthdate": "2012-01-15",
+                "gender": "M",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-48",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Isabel",
+                "last_name": "Harris",
+                "birthdate": "2010-12-03",
+                "gender": "F",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-49",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Jack",
+                "last_name": "Adams",
+                "birthdate": "2011-08-14",
+                "gender": "M",
+                "age_group": "5 - 12",
+                "level": "BEGINNER",
+                "student_id": "id-50",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              }
+            ]
+        },
+        {
+          "level": "BEGINNER",
+          "age_group": "13 - 18",
+          "students": [
+            {
+                "first_name": "Grace",
+                "last_name": "Dunn",
+                "birthdate": "2003-06-21",
+                "gender": "F",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-36",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "James",
+                "last_name": "Wilson",
+                "birthdate": "2004-09-05",
+                "gender": "M",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-37",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Ava",
+                "last_name": "Roberts",
+                "birthdate": "2005-01-13",
+                "gender": "F",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-38",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Oliver",
+                "last_name": "King",
+                "birthdate": "2006-02-04",
+                "gender": "M",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-39",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+              },
+              {
+                "first_name": "Mia",
+                "last_name": "Wilson",
+                "birthdate": "2005-05-03",
+                "gender": "F",
+                "age_group": "13 - 18",
+                "level": "BEGINNER",
+                "student_id": "id-40",
+                "start_date": "2025-05-05",
+                "end_date": "2025-05-12"
+        }
+      ]
+    }
+  ]
+}]
+}

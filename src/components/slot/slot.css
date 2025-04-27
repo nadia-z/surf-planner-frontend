@@ -1,0 +1,8 @@
+.groups-container {
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row
+}
