@@ -23,7 +23,7 @@ describe('Student component', () => {
 
     render(<Student student={mockStudent} removeStudent={mockRemove} />);
 
-    const button = screen.getByRole("button", { name: "X" });
+    const button = screen.getByRole("button", { name: "×" });
     fireEvent.click(button);
 
     expect(mockRemove).toHaveBeenCalledTimes(1);

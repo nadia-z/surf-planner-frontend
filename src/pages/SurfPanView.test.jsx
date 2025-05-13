@@ -45,7 +45,7 @@ describe('SurfPlanView', () => {
   test('removeButton removes student from group when clicked', async () => {
     render(<SurfPlanView />);
 
-    const studentButtons = await screen.findAllByRole('button', { name: /X/i });
+    const studentButtons = await screen.findAllByRole('button', { name: /×/i });
 
     const maxsGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60/i });
 
@@ -63,7 +63,7 @@ describe('SurfPlanView', () => {
   test('removes student from group when clicked and adds student to non-participating guests', async () => {
     render(<SurfPlanView />);
 
-    const studentButtons = await screen.findAllByRole('button', { name: /X/i });
+    const studentButtons = await screen.findAllByRole('button', { name: /×/i });
 
     const maxsGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60/i });
 
@@ -85,10 +85,10 @@ describe('SurfPlanView', () => {
   test('removes multiple students one after another', async () => {
     render(<SurfPlanView />);
 
-    const studentButtons = await screen.findAllByRole('button', { name: /X/i });
+    const studentButtons = await screen.findAllByRole('button', { name: /×/i });
 
     const beginnerGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60/i });
-    const intermediateGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60/i });
+    const intermediateGroup = screen.getByRole('list', { name: /INTERMEDIATE – 18 - 60/i });
 
     fireEvent.click(studentButtons[0]); // remove Max
     fireEvent.click(studentButtons[1]); // remove Lisa
