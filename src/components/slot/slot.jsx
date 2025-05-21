@@ -2,16 +2,19 @@ import React from "react";
 import Group from "../group/group";
 import "./slot.css";
 
-const Slot = ({ slot, removeStudent, non_participating_guests}) => (
+const Slot = ({ slot, slotIndex, removeStudent, non_participating_guests, addStudentToGroup}) => (
   <div className="slot-container">
     <h3>{slot.time}</h3>
     <div className="groups-container">
-      {slot.groups.map((group, i) => (
+      {slot.groups.map((group, groupIndex) => (
         <Group
-          key={i}
+          key={groupIndex}
           group={group}
           non_participating_guests={non_participating_guests}
           removeStudent={removeStudent}
+          addStudentToGroup={addStudentToGroup}
+          slotIndex={slotIndex}
+          groupIndex={groupIndex}
         />
       ))}
     </div>

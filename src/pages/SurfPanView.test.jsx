@@ -6,7 +6,6 @@ import { fetchSurfPlan } from '../api/surfPlanApi';
 jest.mock('../api/surfPlanApi');
 
 describe('SurfPlanView', () => {
-  describe('removeStudent function', () => {
   let mockData;
 
   beforeEach(() => {
@@ -34,90 +33,137 @@ describe('SurfPlanView', () => {
               ]
             }
           ]
+        },
+        {
+          time: '2025-05-07T14:00:00',
+          groups: [
+            {
+              level: 'BEGINNER',
+              age_group: '18 - 60',
+              students: [
+                { student_id: 'id-11', first_name: 'Mia', last_name: 'Baler' },
+                { student_id: 'id-12', first_name: 'Mimi', last_name: 'Raler' }
+              ]
+            },
+            {
+              level: 'INTERMEDIATE',
+              age_group: '18 - 60',
+              students: [
+                { student_id: 'id-13', first_name: 'Moritz', last_name: 'Saler' },
+                { student_id: 'id-14', first_name: 'Michael', last_name: 'Laler' }
+              ]
+            }
+          ]
         }
       ],
-      non_participating_guests: []
+      non_participating_guests: [{ student_id: 'id-5', first_name: 'Rahel', last_name: 'Heinrich' },
+                                  { student_id: 'id-6', first_name: 'Kilian', last_name: 'Singer' },
+                                  { student_id: 'id-7', first_name: 'Resi', last_name: 'Burger' },
+                                  { student_id: 'id-8', first_name: 'Ben', last_name: 'Hirsch' }
+      ]
     };
 
     fetchSurfPlan.mockResolvedValue(mockData);
   });
+  test('handles fetch error and logs it', async () => {
+    const mockError = new Error('Failed to fetch');
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
-  test('removeButton removes student from group when clicked', async () => {
+    fetchSurfPlan.mockRejectedValueOnce(mockError);
+
     render(<SurfPlanView />);
 
-    const studentButtons = await screen.findAllByRole('button', { name: /×/i });
-
-    const maxsGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60/i });
-
-    expect(maxsGroup).toHaveTextContent('Max Maler');
-    expect(maxsGroup).toHaveTextContent('Lisa Maler');
-
-    fireEvent.click(studentButtons[0]);
-
     await waitFor(() => {
-      expect(maxsGroup).not.toHaveTextContent('Max Maler');
+      expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
     });
-    expect(maxsGroup).toHaveTextContent('Lisa Maler');
+    expect(consoleSpy).toHaveBeenCalledWith(mockError);
+    consoleSpy.mockRestore();
   });
-
-  test('removes student from group when clicked and adds student to non-participating guests', async () => {
+  test('shows loading initially and hides after data loads', async () => {
     render(<SurfPlanView />);
-
-    const studentButtons = await screen.findAllByRole('button', { name: /×/i });
-
-    const maxsGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60/i });
-
-    expect(maxsGroup).toHaveTextContent('Max Maler');
-
-    fireEvent.click(studentButtons[0]);
-
-    const addStudentsbutton = await screen.findAllByRole('button', { name: /add students/i });
-    fireEvent.click(addStudentsbutton[0]);
-
-    const nonParticipatingGuests = screen.getByRole('list', { name: /non-participating guests/i });
-
-    await waitFor(() => {
-      expect(maxsGroup).not.toHaveTextContent('Max Maler');
-    });
-    expect(nonParticipatingGuests).toHaveTextContent('Max Maler');
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    await screen.findAllByRole('list'); // wait for data
+    expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
   });
+  describe('removeStudent function', () => {
+    test('removeStudent adds removed student to non_participating_guests', async () => {
+      render(<SurfPlanView />);
 
-  test('removes multiple students one after another', async () => {
-    render(<SurfPlanView />);
+      const studentButtons = await screen.findAllByRole('button', { name: /×/i });
 
-    const studentButtons = await screen.findAllByRole('button', { name: /×/i });
+      const maxsGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60 – 0/i });
 
-    const beginnerGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60/i });
-    const intermediateGroup = screen.getByRole('list', { name: /INTERMEDIATE – 18 - 60/i });
+      expect(maxsGroup).toHaveTextContent('Max Maler');
 
-    fireEvent.click(studentButtons[0]); // remove Max
-    fireEvent.click(studentButtons[1]); // remove Lisa
-    fireEvent.click(studentButtons[2]); // remove Tom
-    fireEvent.click(studentButtons[3]); // remove Jens
-
-    await waitFor(() => {
-      expect(beginnerGroup).not.toHaveTextContent('Max Maler');
-    });
-      expect(beginnerGroup).not.toHaveTextContent('Lisa Maler');
-      expect(intermediateGroup).not.toHaveTextContent('Tom Maler');
-      expect(intermediateGroup).not.toHaveTextContent('Jens Maler');
+      fireEvent.click(studentButtons[0]);
 
       const addStudentsbutton = await screen.findAllByRole('button', { name: /add students/i });
       fireEvent.click(addStudentsbutton[0]);
+
+      const nonParticipatingGuests = screen.getByRole('list', { name: /non-participating guests/i });
+
+      await waitFor(() => {
+        expect(maxsGroup).not.toHaveTextContent('Max Maler');
+      });
+      expect(nonParticipatingGuests).toHaveTextContent('Max Maler');
+    });
+
+    test('removes multiple students one after another', async () => {
+      render(<SurfPlanView />);
+
+      const studentButtons = await screen.findAllByRole('button', { name: /×/i });
+
+      const beginnerGroup = screen.getByRole('list', { name: /BEGINNER – 18 - 60 – 0/i });
+      const intermediateGroup = screen.getByRole('list', { name: /INTERMEDIATE – 18 - 60 – 0/i });
+
+      fireEvent.click(studentButtons[0]); // remove Max
+      fireEvent.click(studentButtons[1]); // remove Lisa
+      fireEvent.click(studentButtons[2]); // remove Tom
+      fireEvent.click(studentButtons[3]); // remove Jens
+
+      await waitFor(() => {
+        expect(beginnerGroup).not.toHaveTextContent('Max Maler');
+      });
+        expect(beginnerGroup).not.toHaveTextContent('Lisa Maler');
+        expect(intermediateGroup).not.toHaveTextContent('Tom Maler');
+        expect(intermediateGroup).not.toHaveTextContent('Jens Maler');
+
+        const addStudentsbutton = await screen.findAllByRole('button', { name: /add students/i });
+        fireEvent.click(addStudentsbutton[0]);
+        const guests = screen.getByRole('list', { name: /non-participating guests/i });
+        expect(guests).toHaveTextContent('Max Maler');
+        expect(guests).toHaveTextContent('Lisa Maler');
+        expect(guests).toHaveTextContent('Tom Maler');
+        expect(guests).toHaveTextContent('Jens Maler');
+    });
+    test('renders with no groups', async () => {
+      mockData.slots[0].groups = [];
+      fetchSurfPlan.mockResolvedValueOnce(mockData);
+
+      render(<SurfPlanView />);
+
+      // expect(await screen.findByText(/non-participating guests/i)).toBeInTheDocument();
+      // expect no group list rendered
+    });
+  });
+  describe('add Student to group logic', () => {
+    test('addStudentToGroup adds guest to group and removes from guests', async () => {
+      render(<SurfPlanView />);
+      const addStudentsbutton = await screen.findAllByRole('button', { name: /add students/i });
+      const beginnerGroup = await screen.findByRole('list', { name: /BEGINNER – 18 - 60 – 0/i });
+      expect(beginnerGroup).not.toHaveTextContent('Rahel Heinrich');
+
+
+      fireEvent.click(addStudentsbutton[0]);
       const guests = screen.getByRole('list', { name: /non-participating guests/i });
-      expect(guests).toHaveTextContent('Max Maler');
-      expect(guests).toHaveTextContent('Lisa Maler');
-      expect(guests).toHaveTextContent('Tom Maler');
-      expect(guests).toHaveTextContent('Jens Maler');
-  });
-  test('renders with no groups', async () => {
-    mockData.slots[0].groups = [];
-    fetchSurfPlan.mockResolvedValueOnce(mockData);
+      expect(guests).toHaveTextContent('Rahel Heinrich');
+      const guestItem = await screen.findByText('Rahel Heinrich');
+      fireEvent.click(guestItem);
 
-    render(<SurfPlanView />);
+      expect(guests).not.toHaveTextContent('Rahel Heinrich');
+      expect(beginnerGroup).toHaveTextContent('Rahel Heinrich');
 
-    // expect(await screen.findByText(/non-participating guests/i)).toBeInTheDocument();
-    // expect no group list rendered
+    });
   });
-});
+
 });

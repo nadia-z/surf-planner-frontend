@@ -1,15 +1,17 @@
 import React from "react";
-import Student from "../Student/Student"
+import Guest from "../Guest/Guest"
+import "./nonParticipatingGuests.css";
 
-const NonParticipatingGuests = ({ non_participating_guests = [] }) => {
+const NonParticipatingGuests = ({ non_participating_guests = [], onAddGuest }) => {
   if (non_participating_guests.length === 0) {
     return <p>No guests available</p>;
   }
   return(
-  <div><p>Non-participating guests:</p>
+  <div className="guest-list"><p>Non-participating guests:</p>
+
     <ul aria-label='non-participating guests'>
           {non_participating_guests.map((guest) => (
-            <Student key={guest.student_id} student={guest} />
+            <Guest key={guest.student_id} student={guest} onClick={onAddGuest}/>
           ))}
         </ul>
   </div>

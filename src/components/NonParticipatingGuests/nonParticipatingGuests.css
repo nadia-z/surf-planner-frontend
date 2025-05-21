@@ -1,0 +1,10 @@
+.guest-list {
+  position: absolute;
+  top: 90%; /* Directly below the button */
+  left: 0;
+  background: white;
+  padding: 1rem;
+  z-index: 9999;
+  box-shadow: 0 1px 3px rgba(139, 139, 139, 0.2);
+  width: max-content; /* Optional: keeps it tight to content */
+}

@@ -3,7 +3,7 @@ import Student from "../Student/Student";
 import NonParticipatingGuests from "../NonParticipatingGuests/NonParticipatingGuests";
 import "./group.css";
 
-const Group = ({ group, removeStudent, non_participating_guests = []}) => {
+const Group = ({ group, removeStudent, non_participating_guests = [], addStudentToGroup, slotIndex, groupIndex}) => {
   const[showGuests, setShowGuests] = useState(false);
   const guestsRef = useRef(null);
 
@@ -25,10 +25,14 @@ const Group = ({ group, removeStudent, non_participating_guests = []}) => {
     };
   }, [showGuests]);
 
+   const handleAddGuest = (guestId) => {
+    addStudentToGroup(guestId, slotIndex, groupIndex);
+  };
+
   return (
   <div className="groups-item">
   <p>{group.level} – {group.age_group}</p>
-    <ul aria-label={`${group.level} – ${group.age_group}`}>
+    <ul aria-label={`${group.level} – ${group.age_group} – ${slotIndex}`}>
     {group.students.map((student) => (
       <Student
         key={student.student_id}
@@ -39,9 +43,10 @@ const Group = ({ group, removeStudent, non_participating_guests = []}) => {
   </ul>
   <button id="btn-participants" onClick={() => setShowGuests(true)}>+ add students</button>
   {showGuests && (
-      <div ref={guestsRef} className="guest-popup">
+      <div ref={guestsRef} >
         <NonParticipatingGuests
           non_participating_guests={non_participating_guests}
+          onAddGuest={handleAddGuest}
         />
       </div>
       )}

@@ -3,8 +3,7 @@ import { fetchSurfPlan } from "../api/surfPlanApi";
 import SurfPlan from "../components/surfPlan/SurfPlan";
 
 function SurfPlanView() {
-  const [surfPlanData, setSurfPlan] = useState([]);
-  // const [nonParticipatingGuests, setNonParticipatingGuests] = useState(false);
+  const [surfPlanData, setSurfPlan] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,6 +17,40 @@ function SurfPlanView() {
         setLoading(false);
       });
   }, []);
+
+const addStudentToGroup = (studentId, slotIndex, groupIndex) => {
+  let addedStudent = null;
+
+  const updatedPlan = {
+    ...surfPlanData,
+    non_participating_guests: surfPlanData.non_participating_guests.filter ( guest => {
+      if (guest.student_id === studentId){
+        addedStudent = guest;
+        return false;
+      } else {
+        return true;
+      }
+    }),
+    slots: surfPlanData.slots.map((slot, sIndex) => {
+      if (sIndex === slotIndex) {
+        return {
+          ...slot,
+          groups: slot.groups.map((group, gIndex) => {
+            if (gIndex === groupIndex) {
+              return {
+                ...group,
+                students: [...group.students, addedStudent]
+              };
+            }
+            return group;
+          })
+        };
+      }
+      return slot;
+    })
+  };
+  setSurfPlan(updatedPlan);
+  };
 
   const removeStudent = (studentId) => {
     console.log("Remove student with ID:", studentId);
@@ -45,19 +78,16 @@ function SurfPlanView() {
     };
 
     setSurfPlan(updatedPlan);
-    console.log(`Student with ID ${studentId} has been removed.`);
   };
-
-  // const toggleNonParticipatingGuest = () => {
-  //   setNonParticipatingGuests(true)
-  // };
-
+  // drag and drop student from one group to other
+  // 1. select a student from a group by clicking and holding
+  // 2. drop student to other group in same or different slot
   return (
     <div>
       {loading ? (
         <p>Loading... 🎉</p>
       ) : (
-        surfPlanData ? <SurfPlan plan={surfPlanData} removeStudent={removeStudent}/> : <p>No surf plan available.</p>
+        surfPlanData ? <SurfPlan plan={surfPlanData} removeStudent={removeStudent} addStudentToGroup={addStudentToGroup}/> : <p>No surf plan available.</p>
       )}
 
     </div>
