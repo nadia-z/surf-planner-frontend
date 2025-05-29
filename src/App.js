@@ -1,10 +1,12 @@
 import SurfPlanView from "./pages/SurfPlanView";
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 function App() {
   return (
-    <div>
-      <SurfPlanView />
-    </div>
+    <DndProvider backend={HTML5Backend}>
+       <SurfPlanView />
+    </DndProvider>
   );
 }
 

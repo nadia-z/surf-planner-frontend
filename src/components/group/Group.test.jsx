@@ -1,6 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Group from './group'; // Import the Group component
 import { waitFor } from '@testing-library/react';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 // Mocking non-participating guests data
 const nonParticipatingGuests = [
@@ -79,9 +81,17 @@ const group = {
   ]
 };
 
+const renderWithDnd = (ui) => {
+  return render(
+    <DndProvider backend={HTML5Backend}>
+      {ui}
+    </DndProvider>
+  );
+};
+
 describe('Group Component', () => {
   test('renders Group component with given group props', () => {
-    render(<Group group={group} non_participating_guests={nonParticipatingGuests} />);
+    renderWithDnd(<Group group={group} non_participating_guests={nonParticipatingGuests} />);
 
     // Check if group heading renders
     expect(screen.getByText(/Beginner – 18-30/i)).toBeInTheDocument();
@@ -92,7 +102,7 @@ describe('Group Component', () => {
     expect(screen.getByText(/Paul Malers/)).toBeInTheDocument();
   });
   test('renders without non_participating_guests', () => {
-    render(<Group group={group} />); // no non_participating_guests
+    renderWithDnd(<Group group={group} />); // no non_participating_guests
 
     const button = screen.getByRole('button', { name: /add students/i });
     fireEvent.click(button);
@@ -101,11 +111,11 @@ describe('Group Component', () => {
   });
   describe('Add Students list behavior', () => {
     test('is hidden by default', () => {
-      render(<Group group={group} non_participating_guests={nonParticipatingGuests} />);
+      renderWithDnd(<Group group={group} non_participating_guests={nonParticipatingGuests} />);
       expect(screen.queryByRole('list', { name: /non-participating guests/i })).not.toBeInTheDocument();
     });
     test('shows guest list when "Add students" is clicked', async () => {
-      render(<Group group={group} non_participating_guests={nonParticipatingGuests} />);
+      renderWithDnd(<Group group={group} non_participating_guests={nonParticipatingGuests} />);
 
       expect(screen.queryByRole('list', { name: /non-participating guests/i })).not.toBeInTheDocument();
 
@@ -120,7 +130,7 @@ describe('Group Component', () => {
       expect(screen.getByText('Anna Müller')).toBeInTheDocument();
     });
     test("closes guest list when clicking outside guest component", async () => {
-      render(<Group group={group} non_participating_guests={nonParticipatingGuests} removeStudent={() => {}} />);
+      renderWithDnd(<Group group={group} non_participating_guests={nonParticipatingGuests} removeStudent={() => {}} />);
 
       const addButton = screen.getByRole("button", { name: "+ add students" });
       fireEvent.click(addButton);
@@ -143,7 +153,7 @@ describe('Group Component', () => {
     });
 
     test("does not close guest list when clicking inside the guest list", async () => {
-      render(
+      renderWithDnd(
         <Group
           group={group}
           non_participating_guests={nonParticipatingGuests}

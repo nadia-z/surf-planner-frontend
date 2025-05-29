@@ -1,9 +1,20 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import SurfPlanView from './SurfPlanView';
 import { fetchSurfPlan } from '../api/surfPlanApi';
 
 // Mock the fetchSurfPlan function
 jest.mock('../api/surfPlanApi');
+
+function renderWithDnD(ui, options) {
+  return render(
+    <DndProvider backend={HTML5Backend}>
+      {ui}
+    </DndProvider>,
+    options
+  );
+}
 
 describe('SurfPlanView', () => {
   let mockData;
@@ -56,22 +67,24 @@ describe('SurfPlanView', () => {
           ]
         }
       ],
-      non_participating_guests: [{ student_id: 'id-5', first_name: 'Rahel', last_name: 'Heinrich' },
-                                  { student_id: 'id-6', first_name: 'Kilian', last_name: 'Singer' },
-                                  { student_id: 'id-7', first_name: 'Resi', last_name: 'Burger' },
-                                  { student_id: 'id-8', first_name: 'Ben', last_name: 'Hirsch' }
+      non_participating_guests: [
+        { student_id: 'id-5', first_name: 'Rahel', last_name: 'Heinrich' },
+        { student_id: 'id-6', first_name: 'Kilian', last_name: 'Singer' },
+        { student_id: 'id-7', first_name: 'Resi', last_name: 'Burger' },
+        { student_id: 'id-8', first_name: 'Ben', last_name: 'Hirsch' }
       ]
     };
 
     fetchSurfPlan.mockResolvedValue(mockData);
   });
+
   test('handles fetch error and logs it', async () => {
     const mockError = new Error('Failed to fetch');
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
     fetchSurfPlan.mockRejectedValueOnce(mockError);
 
-    render(<SurfPlanView />);
+    renderWithDnD(<SurfPlanView />);
 
     await waitFor(() => {
       expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
@@ -79,15 +92,17 @@ describe('SurfPlanView', () => {
     expect(consoleSpy).toHaveBeenCalledWith(mockError);
     consoleSpy.mockRestore();
   });
+
   test('shows loading initially and hides after data loads', async () => {
-    render(<SurfPlanView />);
+    renderWithDnD(<SurfPlanView />);
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
     await screen.findAllByRole('list'); // wait for data
     expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
   });
+
   describe('removeStudent function', () => {
     test('removeStudent adds removed student to non_participating_guests', async () => {
-      render(<SurfPlanView />);
+      renderWithDnD(<SurfPlanView />);
 
       const studentButtons = await screen.findAllByRole('button', { name: /×/i });
 
@@ -109,7 +124,7 @@ describe('SurfPlanView', () => {
     });
 
     test('removes multiple students one after another', async () => {
-      render(<SurfPlanView />);
+      renderWithDnD(<SurfPlanView />);
 
       const studentButtons = await screen.findAllByRole('button', { name: /×/i });
 
@@ -124,35 +139,34 @@ describe('SurfPlanView', () => {
       await waitFor(() => {
         expect(beginnerGroup).not.toHaveTextContent('Max Maler');
       });
-        expect(beginnerGroup).not.toHaveTextContent('Lisa Maler');
-        expect(intermediateGroup).not.toHaveTextContent('Tom Maler');
-        expect(intermediateGroup).not.toHaveTextContent('Jens Maler');
+      expect(beginnerGroup).not.toHaveTextContent('Lisa Maler');
+      expect(intermediateGroup).not.toHaveTextContent('Tom Maler');
+      expect(intermediateGroup).not.toHaveTextContent('Jens Maler');
 
-        const addStudentsbutton = await screen.findAllByRole('button', { name: /add students/i });
-        fireEvent.click(addStudentsbutton[0]);
-        const guests = screen.getByRole('list', { name: /non-participating guests/i });
-        expect(guests).toHaveTextContent('Max Maler');
-        expect(guests).toHaveTextContent('Lisa Maler');
-        expect(guests).toHaveTextContent('Tom Maler');
-        expect(guests).toHaveTextContent('Jens Maler');
+      const addStudentsbutton = await screen.findAllByRole('button', { name: /add students/i });
+      fireEvent.click(addStudentsbutton[0]);
+      const guests = screen.getByRole('list', { name: /non-participating guests/i });
+      expect(guests).toHaveTextContent('Max Maler');
+      expect(guests).toHaveTextContent('Lisa Maler');
+      expect(guests).toHaveTextContent('Tom Maler');
+      expect(guests).toHaveTextContent('Jens Maler');
     });
+
     test('renders with no groups', async () => {
       mockData.slots[0].groups = [];
       fetchSurfPlan.mockResolvedValueOnce(mockData);
 
-      render(<SurfPlanView />);
-
-      // expect(await screen.findByText(/non-participating guests/i)).toBeInTheDocument();
-      // expect no group list rendered
+      renderWithDnD(<SurfPlanView />);
+      // expect no group list rendered, date to be in the docu
     });
   });
+
   describe('add Student to group logic', () => {
     test('addStudentToGroup adds guest to group and removes from guests', async () => {
-      render(<SurfPlanView />);
+      renderWithDnD(<SurfPlanView />);
       const addStudentsbutton = await screen.findAllByRole('button', { name: /add students/i });
       const beginnerGroup = await screen.findByRole('list', { name: /BEGINNER – 18 - 60 – 0/i });
       expect(beginnerGroup).not.toHaveTextContent('Rahel Heinrich');
-
 
       fireEvent.click(addStudentsbutton[0]);
       const guests = screen.getByRole('list', { name: /non-participating guests/i });
@@ -162,8 +176,6 @@ describe('SurfPlanView', () => {
 
       expect(guests).not.toHaveTextContent('Rahel Heinrich');
       expect(beginnerGroup).toHaveTextContent('Rahel Heinrich');
-
     });
   });
-
 });
