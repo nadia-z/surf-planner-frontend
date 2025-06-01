@@ -1,11 +1,12 @@
 import SurfPlanView from "./pages/SurfPlanView";
+import GuestListByDate from "./pages/GuestListView";
 
 function App() {
-  return (
-    <div>
-      <SurfPlanView />
-    </div>
-  );
+    return (
+        <div>
+            <GuestListByDate />
+        </div>
+    );
 }
 
 export default App;

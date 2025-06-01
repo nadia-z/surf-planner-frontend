@@ -1,0 +1,36 @@
+.guestlist-container {
+    margin: 20px;
+}
+
+.guestlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guestlist-tables {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+.guestlist-table {
+    border-collapse: collapse;
+    flex-grow: 1;
+    width: 100%; /* allows guest table to take up space */
+}
+
+.summary-table {
+    border-collapse: collapse;
+    width: auto; /* this ensures it stays only as wide as needed */
+}
+
+.guestlist-table th,
+.guestlist-table td,
+.summary-table th,
+.summary-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
