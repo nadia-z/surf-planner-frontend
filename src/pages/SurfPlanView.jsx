@@ -21,36 +21,56 @@ function SurfPlanView() {
 const addStudentToGroup = (studentId, slotIndex, groupIndex) => {
   let addedStudent = null;
 
-  const updatedPlan = {
-    ...surfPlanData,
-    non_participating_guests: surfPlanData.non_participating_guests.filter ( guest => {
-      if (guest.student_id === studentId){
-        addedStudent = guest;
-        return false;
-      } else {
+  // Remove from guests (if present)
+  const updatedGuests = surfPlanData.non_participating_guests.filter(guest => {
+    if (guest.student_id === studentId) {
+      addedStudent = guest;
+      return false;
+    }
+    return true;
+  });
+
+  // Remove from any group (if present)
+  const cleanedSlots = surfPlanData.slots.map(slot => ({
+    ...slot,
+    groups: slot.groups.map(group => ({
+      ...group,
+      students: group.students.filter(student => {
+        if (student.student_id === studentId) {
+          addedStudent = student;
+          return false;
+        }
         return true;
-      }
-    }),
-    slots: surfPlanData.slots.map((slot, sIndex) => {
-      if (sIndex === slotIndex) {
+      }),
+    })),
+  }));
+
+  if (!addedStudent) {
+    console.warn("Student not found in guests or any group:", studentId);
+    return;
+  }
+
+  // Now insert into the correct group, immutably
+  const updatedSlots = cleanedSlots.map((slot, sIndex) => ({
+    ...slot,
+    groups: slot.groups.map((group, gIndex) => {
+      if (sIndex === slotIndex && gIndex === groupIndex) {
         return {
-          ...slot,
-          groups: slot.groups.map((group, gIndex) => {
-            if (gIndex === groupIndex) {
-              return {
-                ...group,
-                students: [...group.students, addedStudent]
-              };
-            }
-            return group;
-          })
+          ...group,
+          students: [...group.students, addedStudent],
         };
       }
-      return slot;
-    })
-  };
-  setSurfPlan(updatedPlan);
-  };
+      return group;
+    }),
+  }));
+
+  setSurfPlan({
+    ...surfPlanData,
+    non_participating_guests: updatedGuests,
+    slots: updatedSlots,
+  });
+};
+
 
   const removeStudent = (studentId) => {
     console.log("Remove student with ID:", studentId);
@@ -76,12 +96,10 @@ const addStudentToGroup = (studentId, slotIndex, groupIndex) => {
         ...(removedStudent ? [removedStudent] : [])
       ]
     };
-
     setSurfPlan(updatedPlan);
+    console.log("check Remove Student", updatedPlan)
   };
-  // drag and drop student from one group to other
-  // 1. select a student from a group by clicking and holding
-  // 2. drop student to other group in same or different slot
+
   return (
     <div>
       {loading ? (
