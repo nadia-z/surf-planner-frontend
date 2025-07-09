@@ -2,7 +2,7 @@ import React from "react";
 import Group from "../group/group";
 import "./slot.css";
 
-const Slot = ({ slot, slotIndex, removeStudent, non_participating_guests, addStudentToGroup}) => (
+const Slot = ({ slot, slotIndex, removeStudent, non_participating_guests, addStudentToGroup, highlightBookingNumber, setHighlightBookingNumber}) => (
   <div className="slot-container">
     <h3>{slot.time}</h3>
     <div className="groups-container">
@@ -15,6 +15,8 @@ const Slot = ({ slot, slotIndex, removeStudent, non_participating_guests, addStu
           addStudentToGroup={addStudentToGroup}
           slotIndex={slotIndex}
           groupIndex={groupIndex}
+          highlightBookingNumber={highlightBookingNumber}
+          setHighlightBookingNumber={setHighlightBookingNumber}
         />
       ))}
     </div>

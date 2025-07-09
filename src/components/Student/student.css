@@ -1,3 +1,6 @@
 .student {
   padding: 0px;
 }
+.student-container.highlighted {
+  outline: 2px solid red;
+}

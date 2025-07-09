@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import SurfPlanView from "./pages/SurfPlanView";
 import GuestListView from "./pages/GuestListView";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import SurfPlanView from "./pages/SurfPlanView";
 
 function App() {
     const [view, setView] = useState("surf");
@@ -13,10 +13,11 @@ function App() {
                 <div className="btn-group mb-4">
                     <button
                         className={`btn btn-${view === "surf" ? "primary" : "outline-primary"}`}
-                        onClick={() => setView("surf")}
+                        onClick={() => setView("surf plan view")}
                     >
                         Surf Plan
                     </button>
+
                     <button
                         className={`btn btn-${view === "guest" ? "primary" : "outline-primary"}`}
                         onClick={() => setView("guest")}
@@ -25,8 +26,8 @@ function App() {
                     </button>
                 </div>
 
-                {view === "surf" && <SurfPlanView />}
                 {view === "guest" && <GuestListView />}
+                {view === "surf plan view" && <SurfPlanView />}
             </div>
         </DndProvider>
     );

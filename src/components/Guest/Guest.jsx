@@ -4,7 +4,7 @@ import Person from "../person/Person"; // adjust path as needed
 import "./guest.css";
 
 const Guest = ({student, onClick}) => (
-<li onClick={() => onClick(student.student_id)} className="guest">
+<li onClick={() => onClick(student)} className="guest">
   <Person
     name={`${student.first_name} ${student.last_name}`}
   />

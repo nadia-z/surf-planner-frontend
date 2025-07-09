@@ -9,7 +9,9 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.8.4",
     "bootstrap": "^5.3.6",
+    "date-fns": "^4.1.0",
     "react": "^19.1.0",
+    "react-bootstrap": "^2.10.10",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^19.1.0",
@@ -17,12 +19,12 @@
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5"
   },
-"scripts": {
-  "start": "react-app-rewired start",
-  "build": "react-app-rewired build",
-  "test": "react-app-rewired test",
-  "eject": "react-scripts eject"
-},
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

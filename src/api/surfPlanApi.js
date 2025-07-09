@@ -4,9 +4,7 @@ import axios from "axios";
 const API_BASE_URL = "http://localhost:8000"; // Adjust if FastAPI is hosted elsewhere
 export const fetchSurfPlan = async (date) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/surfplan`, {
-      params: { plan_date: date },
-    });
+    const response = await axios.get(`${API_BASE_URL}/surfplan?day=2025-07-06`);
     return response.data;
   } catch (error) {
     console.error("Failed to fetch surf plan:", error);
