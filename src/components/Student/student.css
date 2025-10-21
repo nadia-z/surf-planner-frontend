@@ -2,5 +2,5 @@
   padding: 0px;
 }
 .student-container.highlighted {
-  outline: 2px solid red;
+  background-color: #d2829f;
 }

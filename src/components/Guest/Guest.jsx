@@ -7,6 +7,7 @@ const Guest = ({student, onClick}) => (
 <li onClick={() => onClick(student)} className="guest">
   <Person
     name={`${student.first_name} ${student.last_name}`}
+    birthday={student.birthday}
   />
 </li>
 );

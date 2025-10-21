@@ -51,8 +51,8 @@ const Group = ({
     }, [showGuests]);
 
 
-    const handleAddGuest = (guest) => {
-        addStudentToGroup(guest, slotIndex, groupIndex);
+    const handleAddGuest = (guest, destinationGroup) => {
+        addStudentToGroup(guest, destinationGroup);
     };
 
 
@@ -68,7 +68,7 @@ const Group = ({
             fontSize: "0.75rem"
         }}>
             <p>
-                {group.level}
+                {group.level} <b>{group.students.length}</b>
             </p>
             <ul aria-label={`${group.level} – ${group.age_group} – ${slotIndex}`}>
                 {group.students.map((student) => (
@@ -87,6 +87,7 @@ const Group = ({
                     <NonParticipatingGuests
                         non_participating_guests={non_participating_guests}
                         onAddGuest={handleAddGuest}
+                        group={group}
                     />
                 </div>
             )}

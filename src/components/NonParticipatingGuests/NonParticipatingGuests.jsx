@@ -2,7 +2,8 @@ import React from "react";
 import Guest from "../Guest/Guest"
 import "./nonParticipatingGuests.css";
 
-const NonParticipatingGuests = ({ non_participating_guests = [], onAddGuest }) => {
+const NonParticipatingGuests = ({ non_participating_guests = [], onAddGuest, group }) => {
+
   if (non_participating_guests.length === 0) {
     return <p>No guests available</p>;
   }
@@ -11,7 +12,7 @@ const NonParticipatingGuests = ({ non_participating_guests = [], onAddGuest }) =
 
     <ul aria-label='non-participating guests'>
           {non_participating_guests.map((guest) => (
-            <Guest key={guest.student_id} student={guest} onClick={onAddGuest}/>
+            <Guest key={guest.id} student={guest} onClick={(guest) => onAddGuest(guest, group)}/>
           ))}
         </ul>
   </div>

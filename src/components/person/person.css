@@ -24,6 +24,7 @@ ul {
   width: 100%;
   padding: 0.5rem;
   box-sizing: border-box;
+  background-color: #9cb4c9;
 }
 .student-container button {
   background: none;
@@ -73,4 +74,9 @@ ul {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.level {
+  font-size:xx-small;
+
 }

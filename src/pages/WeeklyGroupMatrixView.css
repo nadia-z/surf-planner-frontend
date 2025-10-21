@@ -1,0 +1,154 @@
+.wk-container {
+    padding: 10px 12px;
+    font-size: 13px;
+}
+
+.wk-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.wk-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.wk-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.wk-date {
+    width: 150px;
+}
+
+/* table wrapper with horizontal+vertical scroll */
+.wk-table-wrap {
+    overflow: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+/* main table */
+.wk-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: max-content;
+    min-width: 100%;
+    table-layout: fixed;
+}
+
+.wk-table thead th, .wk-table tbody td {
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    padding: 6px 8px;
+    background: #fff;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.wk-table thead th:first-child,
+.wk-table tbody td:first-child {
+    border-left: 1px solid #e5e7eb;
+}
+
+/* sticky columns */
+.sticky-left {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: #fff;
+}
+
+.sticky-right {
+    position: sticky;
+    right: 0;
+    z-index: 2;
+    background: #fff;
+}
+
+.left-col {
+    min-width: 220px;
+    text-align: left;
+}
+
+.right-col {
+    min-width: 72px;
+    font-weight: 600;
+}
+
+/* header */
+.day-title {
+    font-weight: 600;
+}
+.day-sub {
+    font-size: 11px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+/* cells */
+.wk-cell {
+    height: 24px;
+    min-width: 36px;
+    cursor: pointer;
+}
+
+/* background states */
+.wk-cell.present { background: #e8f1ff; }     /* light blue when onsite */
+.wk-cell.planned { background: #c9f7d5; }     /* green when planned */
+.wk-cell.not-plannable { background: #f8fafc; color: #9ca3af; }
+
+/* arrival/departure stripes */
+.wk-cell.arrival { box-shadow: inset 0 3px 0 0 #60a5fa; }   /* top stripe (blue) */
+.wk-cell.departure { box-shadow: inset 0 -3px 0 0 #ef4444; }/* bottom stripe (red) */
+
+/* name cell */
+.student-cell .name { font-weight: 600; }
+.student-cell .meta { color: #6b7280; }
+
+/* planned > booked warning */
+.warn {
+    color: #b91c1c;
+}
+
+/* legend */
+.legend .badge {
+    font-weight: 500;
+    border: 1px solid #e5e7eb;
+}
+.legend-stripe {
+    background: #fff;
+    color: #374151;
+}
+.legend-arr {
+    box-shadow: inset 0 3px 0 0 #60a5fa;
+}
+.legend-dep {
+    box-shadow: inset 0 -3px 0 0 #ef4444;
+}
+
+/* small badge utility (if bootstrap isn't present) */
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 11px;
+}
+.me-2 { margin-right: 8px; }
+.mt-2 { margin-top: 8px; }
+.text-muted { color: #6b7280; }
+.small { font-size: 12px; }
+
+.btn { padding: 3px 8px; border: 1px solid #94a3b8; background: #fff; border-radius: 6px; cursor: pointer; }
+.btn-sm { font-size: 12px; }
+.btn-outline-primary { border-color: #3b82f6; color: #1d4ed8; }
+.btn:hover { background: #f1f5f9; }
+.form-control { border: 1px solid #cbd5e1; border-radius: 6px; padding: 4px 6px; }
+.form-control-sm { font-size: 12px; height: 28px; }
+.alert { padding: 8px 10px; border-radius: 6px; }
+.alert-info { background: #e0f2fe; border: 1px solid #93c5fd; }
+.alert-warning { background: #fef3c7; border: 1px solid #facc15; }

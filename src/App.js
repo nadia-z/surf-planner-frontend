@@ -3,6 +3,8 @@ import GuestListView from "./pages/GuestListView";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import SurfPlanView from "./pages/SurfPlanView";
+import WeekTidePlannerView from "./pages/WeekTidePlannerView";
+import WeeklyGroupMatrixView from "./pages/WeeklyGroupMatrixView";
 
 function App() {
     const [view, setView] = useState("surf");
@@ -17,6 +19,12 @@ function App() {
                     >
                         Surf Plan
                     </button>
+                    <button
+                        className={`btn btn-${view === "surf" ? "primary" : "outline-primary"}`}
+                        onClick={() => setView("weekly group matrix view")}
+                    >
+                        Weekly surf group planner
+                    </button>
 
                     <button
                         className={`btn btn-${view === "guest" ? "primary" : "outline-primary"}`}
@@ -24,10 +32,19 @@ function App() {
                     >
                         Guest Diet List
                     </button>
+
+                    <button
+                        className={`btn btn-${view === "guest" ? "primary" : "outline-primary"}`}
+                        onClick={() => setView("tide")}
+                    >
+                        WeekSlotPlanner
+                    </button>
                 </div>
 
+                {view === "weekly group matrix view" && <WeeklyGroupMatrixView />}
                 {view === "guest" && <GuestListView />}
                 {view === "surf plan view" && <SurfPlanView />}
+                {view === "tide" && <WeekTidePlannerView />}
             </div>
         </DndProvider>
     );

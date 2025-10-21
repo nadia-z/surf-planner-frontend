@@ -1,0 +1,25 @@
+:root {
+    --day-height: 110px;
+}
+
+.day-row .scheduled-layer {
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    top: 0;
+    bottom: 0;
+    pointer-events: none; /* slots re-enable pointer events themselves */
+}
+
+.tide-chart {
+    position: relative;
+}
+
+.tide-chart > .scheduled-layer {
+    pointer-events: none;
+}
+
+.slot-block,
+.slot-block * {
+    pointer-events: auto; /* let interactions work */
+}

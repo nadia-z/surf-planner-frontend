@@ -12,9 +12,10 @@ const SurfPlan = ({
                   }) => {
     return (
         <div className="surfplan-container">
+
             <div className="surfplan-header">
                 <h2>Surf Plan for {selectedDate}</h2>
-                <DatePicker selectedDate={selectedDate} onChange={setSelectedDate} />
+                <DatePicker selectedDate={selectedDate} onChange={setSelectedDate}/>
             </div>
 
             {plan ? (
