@@ -7,6 +7,7 @@ import {
   fetchSkillLevelDistribution,
   fetchMonthlyStatistics
 } from "../api/analyticsApi";
+import "./AnalyticsView.css";
 
 // Register Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);

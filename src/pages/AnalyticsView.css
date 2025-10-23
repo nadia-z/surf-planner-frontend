@@ -1,0 +1,25 @@
+/* Analytics View Styles */
+.analytics-container {
+  padding: 20px 0;
+}
+
+.analytics-container .card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.analytics-container .card-body {
+  padding: 20px;
+}
+
+.analytics-container .display-6 {
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+.analytics-container .chart-container {
+  position: relative;
+  height: 300px;
+  padding: 10px;
+}
