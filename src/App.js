@@ -5,22 +5,23 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import SurfPlanView from "./pages/SurfPlanView";
 import WeekTidePlannerView from "./pages/WeekTidePlannerView";
 import WeeklyGroupMatrixView from "./pages/WeeklyGroupMatrixView";
+import AnalyticsView from "./pages/AnalyticsView";
 
 function App() {
-    const [view, setView] = useState("surf");
+    const [view, setView] = useState("surf plan view");
 
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="container mt-3">
                 <div className="btn-group mb-4">
                     <button
-                        className={`btn btn-${view === "surf" ? "primary" : "outline-primary"}`}
+                        className={`btn btn-${view === "surf plan view" ? "primary" : "outline-primary"}`}
                         onClick={() => setView("surf plan view")}
                     >
                         Surf Plan
                     </button>
                     <button
-                        className={`btn btn-${view === "surf" ? "primary" : "outline-primary"}`}
+                        className={`btn btn-${view === "weekly group matrix view" ? "primary" : "outline-primary"}`}
                         onClick={() => setView("weekly group matrix view")}
                     >
                         Weekly surf group planner
@@ -34,10 +35,17 @@ function App() {
                     </button>
 
                     <button
-                        className={`btn btn-${view === "guest" ? "primary" : "outline-primary"}`}
+                        className={`btn btn-${view === "tide" ? "primary" : "outline-primary"}`}
                         onClick={() => setView("tide")}
                     >
                         WeekSlotPlanner
+                    </button>
+
+                    <button
+                        className={`btn btn-${view === "analytics" ? "primary" : "outline-primary"}`}
+                        onClick={() => setView("analytics")}
+                    >
+                        Analytics
                     </button>
                 </div>
 
@@ -45,6 +53,7 @@ function App() {
                 {view === "guest" && <GuestListView />}
                 {view === "surf plan view" && <SurfPlanView />}
                 {view === "tide" && <WeekTidePlannerView />}
+                {view === "analytics" && <AnalyticsView />}
             </div>
         </DndProvider>
     );

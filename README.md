@@ -1,5 +1,21 @@
 # Surf planner
 
+A React-based frontend for managing surf lessons, guest lists, and analytics.
+
+## Features
+
+- **Surf Plan View**: Plan and organize surf lessons
+- **Weekly Group Planner**: Manage weekly surf group schedules
+- **Guest Diet List**: View and export guest dietary requirements
+- **Week Slot Planner**: Schedule weekly time slots
+- **Analytics Dashboard**: View comprehensive statistics and charts including:
+  - Age group distribution (pie chart)
+  - Skill level distribution (bar chart)
+  - Monthly overview with guest counts and lessons
+  - Surf lesson statistics
+  - Date range filtering
+  - Year-based monthly trends
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -26,3 +42,23 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Key Dependencies
+
+- **React 19**: UI framework
+- **React Bootstrap 5**: UI components
+- **Chart.js 4**: Chart rendering engine
+- **react-chartjs-2**: React wrapper for Chart.js
+- **axios**: HTTP client for API requests
+- **react-dnd**: Drag and drop functionality
+- **xlsx**: Excel export functionality
+
+## Backend Integration
+
+This frontend connects to the SurfPlanner backend API. Ensure the backend is running at `http://localhost:8000` or update the `REACT_APP_API_BASE_URL` environment variable.
+
+The analytics dashboard requires the following backend endpoints:
+- `GET /analytics/age-groups?start_date={date}&end_date={date}`
+- `GET /analytics/surf-lessons?start_date={date}&end_date={date}`
+- `GET /analytics/skill-levels?start_date={date}&end_date={date}`
+- `GET /analytics/monthly/{year}`
