@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   fetchCrewAssignments,
   fetchTeams,
@@ -17,14 +17,6 @@ const CrewPlanView = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    loadInitialData();
-  }, []);
-
-  useEffect(() => {
-    loadAssignments();
-  }, [startDate, endDate, selectedTeam]); // eslint-disable-line react-hooks/exhaustive-deps
-
   const loadInitialData = async () => {
     try {
       const [teamsData, crewData] = await Promise.all([
@@ -38,7 +30,7 @@ const CrewPlanView = () => {
     }
   };
 
-  const loadAssignments = async () => {
+  const loadAssignments = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -57,7 +49,15 @@ const CrewPlanView = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [startDate, endDate, selectedTeam, crewMembers]);
+
+  useEffect(() => {
+    loadInitialData();
+  }, []);
+
+  useEffect(() => {
+    loadAssignments();
+  }, [loadAssignments]);
 
   const getCrewMemberName = (crewMemberId) => {
     const member = crewMembers.find((m) => m.id === crewMemberId);

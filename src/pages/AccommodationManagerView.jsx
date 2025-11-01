@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   fetchAccommodations,
   fetchAccommodationAssignments,
@@ -29,11 +29,7 @@ const AccommodationManagerView = () => {
     notes: "",
   });
 
-  useEffect(() => {
-    loadData();
-  }, [startDate, endDate]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -52,7 +48,11 @@ const AccommodationManagerView = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [startDate, endDate]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const getCrewMemberName = (crewMemberId) => {
     const member = crewMembers.find((m) => m.id === crewMemberId);
@@ -356,6 +356,7 @@ const AccommodationManagerView = () => {
                 type="button"
                 className="btn-close"
                 onClick={closeAssignModal}
+                aria-label="Close"
               ></button>
             </div>
             <div className="modal-body">

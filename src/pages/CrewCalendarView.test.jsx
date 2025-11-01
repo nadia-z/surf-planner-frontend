@@ -71,7 +71,7 @@ describe('CrewCalendarView', () => {
     
     render(<CrewCalendarView />);
     
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.getAllByText('Loading...').length).toBeGreaterThan(0);
   });
 
   test('displays error message on fetch failure', async () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { fetchCrewCalendar, fetchTeams } from "../api/crewApi";
 import { format, eachDayOfInterval, parseISO } from "date-fns";
 import "./CrewCalendarView.css";
@@ -12,14 +12,6 @@ const CrewCalendarView = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    loadTeams();
-  }, []);
-
-  useEffect(() => {
-    loadCalendarData();
-  }, [startDate, endDate, selectedTeam]); // eslint-disable-line react-hooks/exhaustive-deps
-
   const loadTeams = async () => {
     try {
       const data = await fetchTeams();
@@ -29,7 +21,7 @@ const CrewCalendarView = () => {
     }
   };
 
-  const loadCalendarData = async () => {
+  const loadCalendarData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -45,7 +37,15 @@ const CrewCalendarView = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [startDate, endDate, selectedTeam]);
+
+  useEffect(() => {
+    loadTeams();
+  }, []);
+
+  useEffect(() => {
+    loadCalendarData();
+  }, [loadCalendarData]);
 
   const getDaysInRange = () => {
     try {
