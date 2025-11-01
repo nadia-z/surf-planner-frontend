@@ -57,8 +57,18 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 This frontend connects to the SurfPlanner backend API. Ensure the backend is running at `http://localhost:8000` or update the `REACT_APP_API_BASE_URL` environment variable.
 
-The analytics dashboard requires the following backend endpoints:
-- `GET /analytics/age-groups?start_date={date}&end_date={date}`
-- `GET /analytics/surf-lessons?start_date={date}&end_date={date}`
-- `GET /analytics/skill-levels?start_date={date}&end_date={date}`
-- `GET /analytics/monthly/{year}`
+The analytics dashboard uses the flexible analytics endpoint:
+- `GET /analytics/flexible?start_date={date}&end_date={date}&interval={interval}&metrics={metrics}`
+  - **Parameters**:
+    - `start_date` (required): Start date in ISO format (YYYY-MM-DD)
+    - `end_date` (required): End date in ISO format (YYYY-MM-DD)
+    - `interval` (optional): Time interval - `daily`, `weekly`, or `monthly` (default: `daily`)
+    - `metrics` (optional): Comma-separated list of metrics to include (e.g., `age_groups,skill_levels,total_guests`)
+  
+  - **Available Metrics**:
+    - `age_groups`: Breakdown by adults, teens, and kids
+    - `lesson_types`: Distribution across surf, yoga, and skate lessons
+    - `skill_levels`: Student skill level distribution
+    - `total_guests`: Total number of guests
+    - `guests_with_lessons`: Number of guests with lessons
+    - `guests_without_lessons`: Number of guests without lessons
