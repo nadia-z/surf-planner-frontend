@@ -6,6 +6,10 @@ import SurfPlanView from "./pages/SurfPlanView";
 import WeekTidePlannerView from "./pages/WeekTidePlannerView";
 import WeeklyGroupMatrixView from "./pages/WeeklyGroupMatrixView";
 import AnalyticsView from "./pages/AnalyticsView";
+import CrewCalendarView from "./pages/CrewCalendarView";
+import PositionTeamManagementView from "./pages/PositionTeamManagementView";
+import CrewPlanView from "./pages/CrewPlanView";
+import AccommodationManagerView from "./pages/AccommodationManagerView";
 
 function App() {
     const [view, setView] = useState("surf plan view");
@@ -47,6 +51,34 @@ function App() {
                     >
                         Analytics
                     </button>
+
+                    <button
+                        className={`btn btn-${view === "crew calendar" ? "primary" : "outline-primary"}`}
+                        onClick={() => setView("crew calendar")}
+                    >
+                        Crew Calendar
+                    </button>
+
+                    <button
+                        className={`btn btn-${view === "crew plan" ? "primary" : "outline-primary"}`}
+                        onClick={() => setView("crew plan")}
+                    >
+                        Crew Plan
+                    </button>
+
+                    <button
+                        className={`btn btn-${view === "position management" ? "primary" : "outline-primary"}`}
+                        onClick={() => setView("position management")}
+                    >
+                        Positions & Teams
+                    </button>
+
+                    <button
+                        className={`btn btn-${view === "accommodation" ? "primary" : "outline-primary"}`}
+                        onClick={() => setView("accommodation")}
+                    >
+                        Accommodation
+                    </button>
                 </div>
 
                 {view === "weekly group matrix view" && <WeeklyGroupMatrixView />}
@@ -54,6 +86,10 @@ function App() {
                 {view === "surf plan view" && <SurfPlanView />}
                 {view === "tide" && <WeekTidePlannerView />}
                 {view === "analytics" && <AnalyticsView />}
+                {view === "crew calendar" && <CrewCalendarView />}
+                {view === "crew plan" && <CrewPlanView />}
+                {view === "position management" && <PositionTeamManagementView />}
+                {view === "accommodation" && <AccommodationManagerView />}
             </div>
         </DndProvider>
     );
