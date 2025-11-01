@@ -32,7 +32,7 @@ export default function TideChart({ width, height, sunrise, sunset, highs, lows,
     const sunriseH = hhmmToHours(sunrise);
     const sunsetH  = hhmmToHours(sunset);
 
-    const { pathD, toXpx, mapY, minH, maxH } = useMemo(() => {
+    const { pathD, toXpx, mapY } = useMemo(() => {
         const keys = [];
         (highs || []).forEach(h => keys.push({ t: hhmmToHours(h.time), h: h.height }));
         (lows || []).forEach(l => keys.push({ t: hhmmToHours(l.time), h: l.height }));

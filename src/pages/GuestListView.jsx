@@ -9,7 +9,6 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const GuestList = () => {
     const [selectedDate, setSelectedDate] = useState("2025-06-01");
-    const [guests, setGuests] = useState([]);
     const [adults, setAdults] = useState([]);
     const [kids, setKids] = useState([]);
     const [summary, setSummary] = useState({});
@@ -65,7 +64,6 @@ const GuestList = () => {
                 // Add kids count to summary
                 flattened["Kids Buns Only"] = {count: kidsCount, tents: ""};
 
-                setGuests(guestsData);
                 setAdults(adultsList);
                 setKids(kidsList);
                 setSummary(flattened);
